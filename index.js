@@ -40,7 +40,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
-app.use(express.static("static"));
+app.use(express.static("./static"));
 
 const ic = {
    "1": 1,
