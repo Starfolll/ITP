@@ -46,10 +46,14 @@ const ic = {
 };
 
 app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
+   console.log("/tip 1");
+
    let fileName = req.file.filename.split('.')[0];
 
    ConvertImageToText(fileName, ic[req.body.imageCompressing]);
    ConvertTextToPdf(fileName, +req.body.fontSize);
+
+   console.log("/tip 2");
 
    res.statusCode = 200;
    res.json(
@@ -57,6 +61,8 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
          "fileName": fileName
       })
    );
+   console.log("/tip 3");
+
 });
 
 app.get("/hello", async (req, res) => {
@@ -104,6 +110,7 @@ app.get('*', function (req, res) {
 app.listen(PORT, () => console.log("server started | listening at " + PORT));
 
 const ConvertImageToText = (fileName, imageStep = 4) => {
+   console.log("converting image to text 1");
    const GetTextPixelFromGreyScale = (scale) => {
       if (scale > 233.75) {
          return "##";
@@ -133,6 +140,7 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
    };
 
    let data = fs.readFileSync(`temp_img/${fileName}.png`);
+   console.log("converting image to text 2");
    let png = PNG.sync.read(data);
    let textImage = "";
 
@@ -158,14 +166,20 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
 
    textImage = textImage.slice(0, textImage.length - authorText.length - 1);
    textImage += authorText;
+   console.log("converting image to text 3");
 
    fs.writeFileSync(`temp_txt/${fileName}.txt`, textImage, (err) => {
       if (err) console.log(err);
    });
+   console.log("converting image to text 4");
 };
 
 const ConvertTextToPdf = (fileName, fontSize = 6) => {
+   console.log("creating pdf 1");
+
    let text = fs.readFileSync(`temp_txt/${fileName}.txt`, "UTF-8");
+
+   console.log("creating pdf 2");
 
    let lengthWidth = text.split("\n")[0].length / FONT_SIZES[fontSize]["width"];
    let lengthHeight = text.split("\n").length / FONT_SIZES[fontSize]["height"];
@@ -213,12 +227,18 @@ const ConvertTextToPdf = (fileName, fontSize = 6) => {
       }
    }
 
+   console.log("creating pdf 3");
+
+
    const doc = new PDFDocument({
       layout: 'landscape',
       margin: 0,
    });
    doc.info["Title"] = "itp_" + fileName.substring(fileName.indexOf("_") + 1);
    doc.info["Author"] = "(Image Text Poster)";
+
+   console.log("creating pdf 4");
+
 
    doc.pipe(fs.createWriteStream(`temp_pdf/${fileName}.pdf`));
    for (let i = 0; i < textMatrix.length; i++) {
@@ -241,4 +261,7 @@ const ConvertTextToPdf = (fileName, fontSize = 6) => {
       }
    }
    doc.end();
+
+   console.log("creating pdf 5");
+
 };
