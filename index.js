@@ -16,7 +16,7 @@ const directories = [
 ];
 
 directories.forEach(d => {
-   if (!fs.existsSync(d)){
+   if (!fs.existsSync(d)) {
       fs.mkdirSync(d);
    }
 });
@@ -41,9 +41,14 @@ const storage = multer.diskStorage({
       cb(null, './temp_img/');
    },
    filename: function (req, file, cb) {
-      cb(null, Date.now() + "_" + file.originalname
+      let fName = file.originalname
          .toLowerCase()
-         .replace(" ", "_"));
+         .replace(" ", "_")
+         .split(".")
+         .join("")
+         .substring(0, file.originalname.split(".").join("").length - 3) + ".png";
+
+      cb(null, Date.now() + "_" + fName);
    }
 });
 const upload = multer({storage: storage});
@@ -58,6 +63,7 @@ const ic = {
 };
 
 app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
+   console.log(req.file.filename);
    let fileName = req.file.filename.split('.')[0];
 
    ConvertImageToText(fileName, ic[req.body.imageCompressing]);
@@ -230,7 +236,6 @@ const ConvertTextToPdf = (fileName, fontSize = 6) => {
    doc.pipe(fs.createWriteStream(`./temp_pdf/${fileName}.pdf`));
    for (let i = 0; i < textMatrix.length; i++) {
       for (let j = 0; j < textMatrix[i].length; j++) {
-         console.log(textMatrix[i][j].indexOf("undefined"));
          if (!!textMatrix[i][j]) {
             if (textMatrix[i][j].indexOf("undefined") === -1) {
                if (i === 0 && j === 0) {
