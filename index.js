@@ -26,7 +26,7 @@ const FONT_SIZES = {
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'temp_img/');
+      cb(null, './temp_img/');
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname
