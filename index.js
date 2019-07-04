@@ -59,6 +59,10 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
    );
 });
 
+app.get("/hello", async (req, res) => {
+   res.send("world");
+});
+
 app.get("/pdf/*", async (req, res) => {
    let fileName = req.originalUrl.split('/')[2];
 
