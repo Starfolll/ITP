@@ -71,7 +71,7 @@ submitButton.onclick = () => {
             .then(data => {
                getFileButton.innerText = "Get file";
                submitLocked = false;
-               window.open(`${window.origin}/pdf/${JSON.parse(data).fileName}`, "_blank");
+               // window.open(`${window.origin}/pdf/${JSON.parse(data).fileName}`, "_blank");
             });
       } else {
          getFileButton.innerText = "no file";

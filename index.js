@@ -19,18 +19,14 @@ const FONT_SIZES = {
       "height": 78,
    },
    8: {
-      "width": 228,
+      "width": 170,
       "height": 63,
-   },
-   12: {
-      "width": 302,
-      "height": 44
-   },
+   }
 };
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, './temp_img/');
+      cb(null, 'temp_img/');
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname
@@ -40,7 +36,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
-app.use(express.static("./static"));
+app.use(express.static("static"));
 
 const ic = {
    "1": 1,
@@ -131,7 +127,7 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
       }
    };
 
-   let data = fs.readFileSync(`./temp_img/${fileName}.png`);
+   let data = fs.readFileSync(`temp_img/${fileName}.png`);
    let png = PNG.sync.read(data);
    let textImage = "";
 
@@ -158,13 +154,13 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
    textImage = textImage.slice(0, textImage.length - authorText.length - 1);
    textImage += authorText;
 
-   fs.writeFileSync(`./temp_txt/${fileName}.txt`, textImage, (err) => {
+   fs.writeFileSync(`temp_txt/${fileName}.txt`, textImage, (err) => {
       if (err) console.log(err);
    });
 };
 
 const ConvertTextToPdf = (fileName, fontSize = 6) => {
-   let text = fs.readFileSync(`./temp_txt/${fileName}.txt`, "UTF-8");
+   let text = fs.readFileSync(`temp_txt/${fileName}.txt`, "UTF-8");
 
    let lengthWidth = text.split("\n")[0].length / FONT_SIZES[fontSize]["width"];
    let lengthHeight = text.split("\n").length / FONT_SIZES[fontSize]["height"];
@@ -219,19 +215,22 @@ const ConvertTextToPdf = (fileName, fontSize = 6) => {
    doc.info["Title"] = "itp_" + fileName.substring(fileName.indexOf("_") + 1);
    doc.info["Author"] = "(Image Text Poster)";
 
-   doc.pipe(fs.createWriteStream(`./temp_pdf/${fileName}.pdf`));
+   doc.pipe(fs.createWriteStream(`temp_pdf/${fileName}.pdf`));
    for (let i = 0; i < textMatrix.length; i++) {
       for (let j = 0; j < textMatrix[i].length; j++) {
+         console.log(textMatrix[i][j].indexOf("undefined"));
          if (!!textMatrix[i][j]) {
-            if (i === 0 && j === 0) {
-               doc.font(`${__dirname}/CONSOLAB.TTF`)
-                  .fontSize(fontSize)
-                  .text(textMatrix[i][j]);
-            } else {
-               doc.addPage()
-                  .font(`${__dirname}/CONSOLAB.TTF`)
-                  .fontSize(fontSize)
-                  .text(textMatrix[i][j]);
+            if (textMatrix[i][j].indexOf("undefined") === -1) {
+               if (i === 0 && j === 0) {
+                  doc.font(`${__dirname}/CONSOLAB.TTF`)
+                     .fontSize(fontSize)
+                     .text(textMatrix[i][j]);
+               } else {
+                  doc.addPage()
+                     .font(`${__dirname}/CONSOLAB.TTF`)
+                     .fontSize(fontSize)
+                     .text(textMatrix[i][j].indexOf("undefined") === -1 ? textMatrix[i][j] : textMatrix[i][j].substring(1, textMatrix[i][j].length));
+               }
             }
          }
       }
