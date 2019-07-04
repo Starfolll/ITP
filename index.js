@@ -4,7 +4,7 @@ const PDFDocument = require('pdfkit');
 const multer = require('multer');
 const PNG = require('pngjs').PNG;
 
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 const authorText = "Image Text Poster ";
