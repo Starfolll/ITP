@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>ITP</title>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link href="https://fonts.googleapis.com/css?family=Monoton|Tangerine&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="index/css/main.css">
+
+   <link rel="icon" href="./pdf-file.svg">
+</head>
+<body>
+
+<nav>
+   <div id="navPadding1" class="nav-background"></div>
+   <div class="nav-background">
+      <p class="like-h1 h1-i">IMAGE</p>
+      <p class="like-h1 h1-t">teXt</p>
+      <p class="like-h1 h1-p">POSTER</p>
+   </div>
+   <div id="navPadding2" class="nav-background"></div>
+</nav>
+
+<hr>
+
+<main>
+   <section class="fileFormSection">
+      <div class="underliner">
+         <label for="fileInput">bRoWs <u>pnG</u> iMAGe </label>
+         <div class="underline"></div>
+      </div>
+      <input id="fileInput" type="file" style="display: none" accept=".png">
+      <img id="imagePreview" src="" alt="">
+   </section>
+
+   <hr>
+
+   <section class="fileFormSection">
+      <p>imAGe compRessinG</p>
+      <div style="height: 20px;"></div>
+      <div class="option-cards" style="flex-direction: column">
+         <div>
+            <input checked type="radio" style="display: none"
+                   id="optionImageCompressing1" name="imageCompressing"
+                   value="1">
+            <label id="optionImageCompress1" for="optionImageCompressing1"><sup>1</sup>/<sub>1</sub></label>
+         </div>
+         <div>
+            <input type="radio" style="display: none"
+                   id="optionImageCompressing2" name="imageCompressing"
+                   value="1/2">
+            <label id="optionImageCompress2" for="optionImageCompressing2"><sup>1</sup>/<sub>2</sub></label>
+         </div>
+         <div>
+            <input checked type="radio" style="display: none"
+                   id="optionImageCompressing3" name="imageCompressing"
+                   value="1/3">
+            <label id="optionImageCompress3" for="optionImageCompressing3"><sup>1</sup>/<sub>3</sub></label>
+         </div>
+         <div>
+            <input type="radio" style="display: none"
+                   id="optionImageCompressing4" name="imageCompressing"
+                   value="1/4">
+            <label id="optionImageCompress4" for="optionImageCompressing4"><sup>1</sup>/<sub>4</sub></label>
+         </div>
+      </div>
+   </section>
+
+   <hr>
+
+   <section class="fileFormSection">
+      <p>font size</p>
+      <div style="height: 20px;"></div>
+      <div class="option-cards">
+         <div>
+            <input type="radio" style="display: none" id="optionFontSize0" name="fontSize" value="4">
+            <label for="optionFontSize0">4</label>
+         </div>
+         <div>
+            <input checked type="radio" style="display: none" id="optionFontSize1" name="fontSize" value="6">
+            <label for="optionFontSize1">6</label>
+         </div>
+         <div>
+            <input type="radio" style="display: none" id="optionFontSize2" name="fontSize" value="8">
+            <label for="optionFontSize2">8</label>
+         </div>
+         <div>
+            <input type="radio" style="display: none" id="optionFontSize3" name="fontSize" value="12">
+            <label for="optionFontSize3">12</label>
+         </div>
+      </div>
+   </section>
+
+   <hr>
+
+   <aside class="fileFormSection">
+      <div class="underliner">
+         <label id="labelSubmitButton" for="submitButton" class="error">no file</label>
+         <div class="underline"></div>
+      </div>
+      <button id="submitButton" style="display: none"></button>
+   </aside>
+</main>
+
+<hr>
+
+<footer>
+   <p style="padding: 5px; text-align: center">cReAted by</p>
+   <div class="underliner">
+      <a href="https://github.com/Starfolll" target="_blank">< stARfolll ></a>
+      <div class="underline"></div>
+   </div>
+</footer>
+
+</body>
+<script rel="script" src="index/scripts/logic.js"></script>
+</html>
