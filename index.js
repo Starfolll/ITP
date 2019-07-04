@@ -9,6 +9,18 @@ const app = express();
 
 const authorText = "Image Text Poster ";
 
+const directories = [
+   "./temp_img",
+   "./temp_pdf",
+   "./temp_txt",
+];
+
+directories.forEach(d => {
+   if (!fs.existsSync(d)){
+      fs.mkdirSync(d);
+   }
+});
+
 const FONT_SIZES = {
    4: {
       "width": 340,
@@ -139,7 +151,7 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
       }
    };
 
-   let data = fs.readFileSync(`temp_img/${fileName}.png`);
+   let data = fs.readFileSync(`./temp_img/${fileName}.png`);
    console.log("converting image to text 2");
    let png = PNG.sync.read(data);
    let textImage = "";
@@ -168,7 +180,7 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
    textImage += authorText;
    console.log("converting image to text 3");
 
-   fs.writeFileSync(`temp_txt/${fileName}.txt`, textImage, (err) => {
+   fs.writeFileSync(`./temp_txt/${fileName}.txt`, textImage, (err) => {
       if (err) console.log(err);
    });
    console.log("converting image to text 4");
@@ -177,7 +189,7 @@ const ConvertImageToText = (fileName, imageStep = 4) => {
 const ConvertTextToPdf = (fileName, fontSize = 6) => {
    console.log("creating pdf 1");
 
-   let text = fs.readFileSync(`temp_txt/${fileName}.txt`, "UTF-8");
+   let text = fs.readFileSync(`./temp_txt/${fileName}.txt`, "UTF-8");
 
    console.log("creating pdf 2");
 
@@ -240,7 +252,7 @@ const ConvertTextToPdf = (fileName, fontSize = 6) => {
    console.log("creating pdf 4");
 
 
-   doc.pipe(fs.createWriteStream(`temp_pdf/${fileName}.pdf`));
+   doc.pipe(fs.createWriteStream(`./temp_pdf/${fileName}.pdf`));
    for (let i = 0; i < textMatrix.length; i++) {
       for (let j = 0; j < textMatrix[i].length; j++) {
          console.log(textMatrix[i][j].indexOf("undefined"));
