@@ -25,7 +25,6 @@ fileInput.oninput = () => {
 
       let img = new Image();
       img.onload = () => {
-         console.log(img.width + 'x' + img.height);
          getCompressOptionsInnerHtml("1", img);
          getCompressOptionsInnerHtml("2", img);
          getCompressOptionsInnerHtml("3", img);
@@ -71,7 +70,7 @@ submitButton.onclick = () => {
             .then(data => {
                getFileButton.innerText = "Get file";
                submitLocked = false;
-               // window.open(`${window.origin}/pdf/${JSON.parse(data).fileName}`, "_blank");
+               window.open(`${window.origin}/pdf/${JSON.parse(data).fileName}`, "_blank");
             });
       } else {
          getFileButton.innerText = "no file";
