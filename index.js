@@ -50,6 +50,7 @@ const ic = {
 };
 
 app.post("/tip", upload.single('imgToPoster'), (req, res) => {
+   console.log(" | " + req.originalUrl);
    let fileName = req.file.filename.split('.')[0];
 
    ConvertImageToText(fileName, ic[req.body.imageCompressing]);
@@ -64,6 +65,8 @@ app.post("/tip", upload.single('imgToPoster'), (req, res) => {
 });
 
 app.get("/pdf/*", (req, res) => {
+   console.log(" | " + req.originalUrl);
+
    let fileName = req.originalUrl.split('/')[2];
 
    if (fs.existsSync(`${__dirname}/temp_img/${fileName}.png`)) {
@@ -97,6 +100,8 @@ app.get("/pdf/*", (req, res) => {
 });
 
 app.get('*', function (req, res) {
+   console.log(" | " + req.originalUrl);
+
    res.status(404).sendFile(`${__dirname}/404.html`);
 });
 
