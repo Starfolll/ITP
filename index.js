@@ -60,6 +60,7 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
 });
 
 app.get("/hello", async (req, res) => {
+   console.log("hello world");
    res.send("world");
 });
 
