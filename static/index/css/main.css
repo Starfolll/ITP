@@ -6,7 +6,7 @@
 }
 
 :root {
-    --first: #ffeec4;
+    --first: rgb(255, 238, 196);
     --second: black;
     --link: deepskyblue;
 }
@@ -27,18 +27,19 @@
     background: #555;
 }
 
-html,body
-{
+html, body {
     overflow-x: hidden;
 }
 
 body {
     background-color: var(--second);
+    padding: 0 10px;
 }
 
 hr {
     margin: 3px auto;
     width: 75%;
+    max-width: 400px;
     background: var(--first);
     border: 1px solid var(--first);
     border-radius: 10px;
@@ -48,6 +49,7 @@ hr {
     min-height: 100px;
     background: var(--second);
     color: var(--first);
+    text-shadow: 0 0 50px var(--first);
 }
 
 
@@ -86,6 +88,9 @@ label:hover {
 }
 
 .fileFormSection {
+    margin: 0 auto;
+    max-width: 510px;
+    border-radius: 3px;
     transition: color 0.5s, background-color 0.5s;
     padding: 20px;
     background-color: var(--first);
@@ -105,9 +110,10 @@ label:hover {
 }
 
 .fileFormSection > img {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 10px;
     background: var(--first);
 }
 
@@ -139,7 +145,6 @@ label:hover {
 
 
 .option-cards {
-    width: 85vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

@@ -4,13 +4,28 @@
 }
 
 body {
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
     background-color: black;
-    color: white;
+    color: #ffeec4;
 }
 
 h1 {
+    text-align: center;
     margin: 10px;
     padding: 10px;
-    border-left: 3px solid white;
     font-family: 'Major Mono Display', monospace;
+}
+
+hr {
+    margin: 3px auto;
+    width: 75%;
+    background: #ffeec4;
+    border: 1px solid #ffeec4;
+    border-radius: 10px;
 }
