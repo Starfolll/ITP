@@ -59,19 +59,53 @@ directories.forEach(d => {
 app.use(express.static("static"));
 
 app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
-    console.log(req.file.filename);
     let fileName = req.file.filename.split('.')[0];
-    console.log(req.file);
+    const removeFiles = () => {
+        let pdfFilePath = `${__dirname}/temp_pdf/${fileName}.pdf`;
+        let imgFilePath = `${__dirname}/temp_img/${fileName}.png`;
+        let txtFilePath = `${__dirname}/temp_txt/${fileName}.txt`;
+        if (fs.existsSync(pdfFilePath)) fs.unlinkSync(pdfFilePath);
+        if (fs.existsSync(imgFilePath)) fs.unlinkSync(imgFilePath);
+        if (fs.existsSync(txtFilePath)) fs.unlinkSync(txtFilePath);
+    };
 
-    ConvertImageToText(fileName, ic[req.body.imageCompressing]);
-    ConvertTextToPdf(fileName, +req.body.fontSize);
+    try {
+        console.log(req.file);
+        if (req.file.size > 1154376) {
+            removeFiles();
+            res.statusCode = 200;
+            res.json(
+                JSON.stringify({
+                    "invalidImage": true,
+                    "oversize": true,
+                    "fileName": fileName
+                })
+            );
+            return;
+        }
 
-    res.statusCode = 200;
-    res.json(
-        JSON.stringify({
-            "fileName": fileName
-        })
-    );
+        ConvertImageToText(fileName, ic[req.body.imageCompressing]);
+        ConvertTextToPdf(fileName, +req.body.fontSize);
+
+        res.statusCode = 200;
+        res.json(
+            JSON.stringify({
+                "invalidImage": false,
+                "oversize": false,
+                "fileName": fileName
+            })
+        );
+    } catch (e) {
+        removeFiles();
+        res.statusCode = 200;
+        res.json(
+            JSON.stringify({
+                "invalidImage": true,
+                "oversize": false,
+                "fileName": fileName
+            })
+        );
+    }
 });
 app.get("/pdf/*", async (req, res) => {
     let fileName = req.originalUrl.split('/')[2];

@@ -23,6 +23,7 @@ const GetRadioNameValue = name => {
 };
 
 fileInput.oninput = () => {
+    submitLocked = false;
     getFileButton.innerText = "Get file";
     getFileButton.setAttribute("class", null);
     imagePreview.setAttribute("class", "img-border");
@@ -62,13 +63,22 @@ submitButton.onclick = () => {
                     body: formData,
                 })
                 .then(res => {
-                    return res.json()
+                    return res.json();
                 })
                 .then(data => {
-                    getFileButton.innerText = "Get file";
-                    submitLocked = false;
-                    window.open(`${window.origin}/pdf/${JSON.parse(data).fileName}`, "_blank");
-                });
+                    let parsedData = JSON.parse(data);
+                    if (parsedData.invalidImage === false) {
+                        submitLocked = false;
+                        getFileButton.innerText = "Get file";
+                        window.open(`${window.origin}/pdf/${parsedData.fileName}`, "_blank");
+                    } else if (parsedData.oversize === true) {
+                        getFileButton.innerText = "imaGe oversize";
+                        getFileButton.setAttribute("class", "error");
+                    } else {
+                        getFileButton.innerText = "invAlid imaGe";
+                        getFileButton.setAttribute("class", "error");
+                    }
+                })
         } else {
             getFileButton.innerText = "no file";
             getFileButton.setAttribute("class", "error");

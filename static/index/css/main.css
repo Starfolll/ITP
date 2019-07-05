@@ -16,11 +16,11 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--first);
+    background: var(--second);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--second);
+    background: var(--first);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -72,6 +72,10 @@ hr {
 }
 
 label:hover {
+    cursor: pointer;
+}
+
+label:hover > u{
     cursor: pointer;
 }
 
