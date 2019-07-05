@@ -38,14 +38,7 @@ const storage = multer.diskStorage({
         cb(null, './temp_img/');
     },
     filename: function (req, file, cb) {
-        let fName = file.originalname
-            .toLowerCase()
-            .replace(" ", "_")
-            .split(".")
-            .join("")
-            .substring(0, file.originalname.split(".").join("").length - 3) + ".png";
-
-        cb(null, Date.now() + "_" + fName);
+        cb(null, Date.now() + "_" + (Math.random() * 10000 | 0) + ".png");
     }
 });
 const upload = multer({storage: storage});
@@ -70,7 +63,7 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
     };
 
     try {
-        console.log(req.file);
+        console.table(req.file);
         if (req.file.size > 1154376) {
             removeFiles();
             res.statusCode = 200;
@@ -95,6 +88,10 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
                 "fileName": fileName
             })
         );
+
+        setTimeout(() => {
+            removeFiles();
+        }, 10000);
     } catch (e) {
         removeFiles();
         res.statusCode = 200;
