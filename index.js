@@ -64,7 +64,7 @@ app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
 
     try {
         console.table(req.file);
-        if (req.file.size > 1154376) {
+        if (req.file.size > 2500000) {
             removeFiles();
             res.statusCode = 200;
             res.json(
