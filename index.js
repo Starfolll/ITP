@@ -43,6 +43,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
+let converts = 0;
+
 directories.forEach(d => {
     if (!fs.existsSync(d)) {
         fs.mkdirSync(d);
@@ -52,6 +54,8 @@ directories.forEach(d => {
 app.use(express.static("static"));
 
 app.post("/tip", upload.single('imgToPoster'), async (req, res) => {
+    converts++;
+    console.log(` | CONVERTS : ${converts}`);
     let fileName = req.file.filename.split('.')[0];
     const removeFiles = () => {
         let pdfFilePath = `${__dirname}/temp_pdf/${fileName}.pdf`;
@@ -138,7 +142,7 @@ app.get("/pdf/*", async (req, res) => {
 });
 app.get('*', async (req, res) => res.status(404).sendFile(`${__dirname}/404.html`));
 
-app.listen(PORT, () => console.log("server started | listening at " + PORT));
+app.listen(PORT, () => console.log(" | SERVER STARTED | listening at " + PORT));
 
 const ConvertImageToText = (fileName, imageStep = 4) => {
     const GetTextPixelFromGreyScale = (scale) => {

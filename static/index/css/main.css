@@ -43,6 +43,9 @@ hr {
     background: var(--first);
     border: 1px solid var(--first);
     border-radius: 10px;
+
+    animation: popupHr;
+    animation-duration: 3s;
 }
 
 .nav-background {
@@ -75,7 +78,7 @@ label:hover {
     cursor: pointer;
 }
 
-label:hover > u{
+label:hover > u {
     cursor: pointer;
 }
 
@@ -207,4 +210,46 @@ a:hover {
 
 a ~ .underline {
     border-color: var(--link) !important;
+}
+
+.popup-left{
+    animation: popupLeft ease-in-out;
+}
+
+.popup-right{
+    animation: popupRight ease-in-out;
+}
+
+@keyframes popupLeft {
+    0% {
+        position: relative;
+        left: -1000px;
+    }
+
+    100% {
+        position: relative;
+        left: 0;
+    }
+}
+
+@keyframes popupRight {
+    0% {
+        position: relative;
+        right: -1000px;
+    }
+
+    100% {
+        position: relative;
+        right: 0;
+    }
+}
+
+@keyframes popupHr {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }

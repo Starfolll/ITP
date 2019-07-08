@@ -92,3 +92,4 @@ window.onscroll = () => {
     let s = (100 - scrollTop) / 100;
     headerText.style.opacity = `${s < 0.2 ? 0.2 : s}`;
 };
+window.onscroll();
