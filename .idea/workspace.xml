@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0705d21e-f343-4a92-a3a6-2152fc256435" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index/scripts/logic.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/index/scripts/logic.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -124,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+            <state relative-caret-position="153">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#294#351#0" />
                 <element signature="e#381#564#0" />
@@ -141,6 +138,7 @@
                 <element signature="e#796#878#0" />
                 <element signature="e#952#1015#0" />
                 <element signature="e#981#1013#0" />
+                <element signature="e#1141#2747#0" />
                 <element signature="e#1206#1618#0" />
                 <element signature="e#1629#2424#0" />
                 <element signature="e#1701#2003#0" />
@@ -197,6 +195,18 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="184">
+                <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
@@ -236,6 +246,7 @@
         <option value="$PROJECT_DIR$/static/index/css/main.css" />
         <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -256,17 +267,6 @@
             <path>
               <item name="ImageTextPosters" type="b2602c69:ProjectViewProjectNode" />
               <item name="ImageTextPosters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ImageTextPosters" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ImageTextPosters" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ImageTextPosters" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ImageTextPosters" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -323,18 +323,18 @@
       <workItem from="1562427637813" duration="420000" />
       <workItem from="1562429492302" duration="863000" />
       <workItem from="1562517228450" duration="2634000" />
-      <workItem from="1562585977745" duration="2147000" />
+      <workItem from="1562585977745" duration="3153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19691000" />
+    <option name="totallyTimeSpent" value="20697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1899841" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1899841" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -475,8 +475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+        <state relative-caret-position="153">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#294#351#0" />
             <element signature="e#381#564#0" />
@@ -489,6 +489,7 @@
             <element signature="e#796#878#0" />
             <element signature="e#952#1015#0" />
             <element signature="e#981#1013#0" />
+            <element signature="e#1141#2747#0" />
             <element signature="e#1206#1618#0" />
             <element signature="e#1629#2424#0" />
             <element signature="e#1701#2003#0" />
@@ -541,6 +542,16 @@
             <element signature="e#7807#7993#0" />
             <element signature="e#7999#8328#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="184">
+            <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
